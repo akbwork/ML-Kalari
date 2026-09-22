@@ -23,6 +23,8 @@ vllm serve openai/whisper-small --port 8000 2>&1 | tee logs/vllm_audio.log
 
 - Git clone the repo into a folder named vLLM_test
 
+- Place all the test audio files in test_files/  and create a logs/ folder to store the output logs. 
+
 - In a separate terminal instance Start Nvidia Gpu monitoring service using:
 nvidia-smi --query-gpu=timestamp,utilization.gpu,utilization.memory,memory.used,memory.total,power.draw --format=csv -lms 200 > logs/gpu.csv
 
