@@ -11,8 +11,10 @@ MODEL_DIR="${KALARI_ROOT}/model_repo/openai_whisper-small"
 LOG_DIR="${SCRIPT_DIR}/logs"
 LOG_FILE="${LOG_DIR}/vllm_audio.log"
 HOST="0.0.0.0"
-PORT="8000"
+PORT="8015"
 # MAX_MODEL_LEN="8192"
+
+GPU_MEMORY_UTIL=0.95
 
 mkdir -p "${LOG_DIR}"
 
@@ -21,9 +23,11 @@ echo "Kalari root: ${KALARI_ROOT}"
 echo "Model dir:   ${MODEL_DIR}"
 echo "Starting vLLM-MLX server... logging to ${LOG_FILE}"
 
-vllm-mlx serve "${MODEL_DIR}" \
+vllm serve "${MODEL_DIR}" \
     --host "${HOST}" \
     --port "${PORT}" \
-    # --max-model-len "${MAX_MODEL_LEN}" \
-    --offline \
+    --gpu-memory-utilization "${GPU_MEMORY_UTIL}" \
+    --served-model-name "openai/whisper-small" \
     2>&1 | tee "${LOG_FILE}"
+
+#  --max-model-len "${MAX_MODEL_LEN}" \

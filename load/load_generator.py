@@ -20,7 +20,8 @@ class LoadGenerator:
             futures = [
                 executor.submit(
                     transcribe, # job 
-                    self.audio_file, # data
+                    self.audio_file,
+                    "audio.wav", # data
                     i # no of threads executing it independently
                 )
                 for i in range(concurrency)
@@ -28,9 +29,16 @@ class LoadGenerator:
             # As threads finish executing, store the results from their future into the results. 
             # This should contain: request id, latency and text_len 
             for future in as_completed(futures):
-                results.append(
-                    future.result()
-                )
+                try:
+                    results.append(future.result())
+                except Exception as e:
+                    print(f"Request failed: {e}")
+                    results.append({
+                        "request": None,
+                        "latency": None,
+                        "text_len": None,
+                        "error": str(e),
+                    })
 
         return results
 

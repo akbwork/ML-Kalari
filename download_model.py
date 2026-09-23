@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+from pathlib import Path
 from huggingface_hub import snapshot_download
 
 
@@ -12,7 +13,9 @@ class DownloadModel:
         raw_token = os.getenv("HF_TOKEN")
         self.hf_token = raw_token.strip() if raw_token and raw_token.strip() else None
 
-
+        # Create the local directory if it doesn't exist
+        Path(self.local_dir).mkdir(parents=True, exist_ok=True)
+        print(f"Model store directory ready: {self.local_dir}")
 
         if not self.local_dir:
             raise ValueError("Environment variable MODEL_STORE is not set.")
@@ -25,7 +28,6 @@ class DownloadModel:
             os.environ.pop("HF_TOKEN", None)
 
     def run_download(self):
-        # Support one or multiple comma-separated model names
         model_list = [name.strip() for name in self.model_names.split(",") if name.strip()]
 
         for model_repo in model_list:

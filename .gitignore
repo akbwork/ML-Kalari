@@ -1,5 +1,6 @@
 .env
 .venv
+__pycache__/
 
 model_repo/openai_whisper-small
 model_repo/mlx-community_whisper-small-mlx-fp32
