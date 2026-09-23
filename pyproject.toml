@@ -1,0 +1,11 @@
+[project]
+name = "vLLM-LoadTesting"
+version = "0.1.0"
+description = "Load testing toolkit for vLLM inference servers, including audio-input model support"
+requires-python = ">=3.13"
+dependencies = [
+    "vllm[audio]>=0.7.3; sys_platform == 'linux'",
+    "vllm-mlx[audio]; sys_platform == 'darwin'",
+    "dotenv>=0.9.9",
+    "huggingface-hub>=1.32.0",
+]
