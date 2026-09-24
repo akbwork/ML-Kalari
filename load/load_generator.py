@@ -3,7 +3,7 @@ from concurrent.futures import ThreadPoolExecutor
 # To acess results from each thread without waiting for the other threads
 from concurrent.futures import as_completed 
 # Custom transcription pay load
-from client.transcription import transcribe 
+from client.transcription import transcribe
 
 """Central object that will control the load testing"""
 class LoadGenerator:
@@ -20,8 +20,7 @@ class LoadGenerator:
             futures = [
                 executor.submit(
                     transcribe, # job 
-                    self.audio_file,
-                    "audio.wav", # data
+                    self.audio_file, # data
                     i # no of threads executing it independently
                 )
                 for i in range(concurrency)
@@ -29,16 +28,9 @@ class LoadGenerator:
             # As threads finish executing, store the results from their future into the results. 
             # This should contain: request id, latency and text_len 
             for future in as_completed(futures):
-                try:
-                    results.append(future.result())
-                except Exception as e:
-                    print(f"Request failed: {e}")
-                    results.append({
-                        "request": None,
-                        "latency": None,
-                        "text_len": None,
-                        "error": str(e),
-                    })
+                results.append(
+                    future.result()
+                )
 
         return results
 

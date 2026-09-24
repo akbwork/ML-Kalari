@@ -1,9 +1,4 @@
-# AUDIO_FILE = "/data/arcaai/ananth/projects/Github/ML-Kalari/testfiles/DannyBCM002_CTChestPlainContrast_Acute.wav"
-
-AUDIO_PATH = "/data/arcaai/ananth/projects/Github/ML-Kalari/testfiles/DannyBCM002_CTChestPlainContrast_Acute.wav"
-
-with open(AUDIO_PATH, "rb") as f:   # "rb" = binary mode
-    AUDIO_FILE = f.read()
+AUDIO_FILE = "/data/arcaai/ananth/projects/Github/ML-Kalari/testfiles/DannyBCM002_CTChestPlainContrast_Acute.wav"
 
 CONCURRENCY_LEVELS = [
     1,

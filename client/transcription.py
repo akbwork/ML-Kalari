@@ -12,23 +12,24 @@ client = OpenAI(
 
 MODEL_ID = client.models.list().data[0].id
 
+
 # Actual transcription api call
-def transcribe(audio_bytes: bytes, filename: str, req_id: int):
+def transcribe(audio_file, req_id):
     start = time.time()
 
     try:
-        # Pass (filename, bytes) tuple instead of file object 'f'
-        result = client.audio.transcriptions.create(
-            model=MODEL_ID,
-            file=(filename, audio_bytes),
-            language="en"
-        )
-        latency = time.time() - start
-        return {
+        with open(audio_file, "rb") as f:
+            result = client.audio.transcriptions.create(
+                model=MODEL_ID,
+                file=f,
+                language="en"
+            )
+        latency = time.time() - start 
+
+        return{
             "request": req_id,
             "latency": latency,
-            "text_len": len(result.text),
-            "error": None
+            "text_len": len(result.text)
         }
     except Exception as e:
         return {
