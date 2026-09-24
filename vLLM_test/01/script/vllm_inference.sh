@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Go up 3 levels to reach the ML-Kalari project root
 KALARI_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 
-MODEL_DIR="${KALARI_ROOT}/model_repo/openai_whisper-small"
+MODEL_DIR="${KALARI_ROOT}/model_repo/taphuynh_whisper_turbo_radiology_en_03_sept"
 LOG_DIR="${SCRIPT_DIR}/logs"
 LOG_FILE="${LOG_DIR}/vllm_audio.log"
 HOST="0.0.0.0"
@@ -27,7 +27,7 @@ vllm serve "${MODEL_DIR}" \
     --host "${HOST}" \
     --port "${PORT}" \
     --gpu-memory-utilization "${GPU_MEMORY_UTIL}" \
-    --served-model-name "openai/whisper-small" \
+    --served-model-name "taphuynh/whisper_turbo_radiology_en_03_sept" \
     2>&1 | tee "${LOG_FILE}"
 
 #  --max-model-len "${MAX_MODEL_LEN}" \

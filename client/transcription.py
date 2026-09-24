@@ -9,6 +9,9 @@ client = OpenAI(
     timeout=60.0,
     max_retries=2,
 )
+
+MODEL_ID = client.models.list().data[0].id
+
 # Actual transcription api call
 def transcribe(audio_bytes: bytes, filename: str, req_id: int):
     start = time.time()
@@ -16,7 +19,7 @@ def transcribe(audio_bytes: bytes, filename: str, req_id: int):
     try:
         # Pass (filename, bytes) tuple instead of file object 'f'
         result = client.audio.transcriptions.create(
-            model="openai/whisper-small",
+            model=MODEL_ID,
             file=(filename, audio_bytes),
             language="en"
         )
