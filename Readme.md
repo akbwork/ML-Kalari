@@ -73,7 +73,7 @@ HF_TOKEN=""
 
 ## vLLM Deployment
 
-vLLM is deployed on bare-metal servers (ArcaAI AI/ML node).
+vLLM is deployed on bare-metal servers (AI/ML node).
 
 Start the server (in a separate terminal):
 
