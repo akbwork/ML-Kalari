@@ -22,6 +22,7 @@ vllm serve "${MODEL_DIR}" \
     --host "${HOST}" \
     --port "${PORT}" \
     --gpu-memory-utilization "${GPU_MEMORY_UTIL}" \
+    --enable-per-request-metrics \
     --served-model-name "taphuynh/whisper_turbo_radiology_en_03_sept" \
     --allowed-origins '["*"]' \
     2>&1 | tee "${LOG_FILE}"
