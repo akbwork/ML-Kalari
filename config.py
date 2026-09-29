@@ -1,4 +1,4 @@
-AUDIO_FILE = "/data/arcaai/ananth/projects/Github/ML-Kalari/testfiles/DannyBCM002_CTChestPlainContrast_Acute.wav"
+AUDIO_FILE = ""
 
 CONCURRENCY_LEVELS = [
     1,
