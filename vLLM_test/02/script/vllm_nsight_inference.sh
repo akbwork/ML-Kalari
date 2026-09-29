@@ -13,6 +13,11 @@ GPU_MEMORY_UTIL=0.95 # 95% GPU
 
 mkdir -p "${LOG_DIR}"
 
+echo "Script dir:  ${SCRIPT_DIR}"
+echo "Kalari root: ${KALARI_ROOT}"
+echo "Model dir:   ${MODEL_DIR}"
+echo "Starting vLLM-MLX server... logging to ${LOG_FILE}"
+
 vllm serve "${MODEL_DIR}" \
     --host "${HOST}" \
     --port "${PORT}" \
