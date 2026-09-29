@@ -22,3 +22,17 @@
 
 ## vLLM Curl Commands
 
+
+## NSight Commands
+1. Python Script: 
+    - nsys profile   --trace=cuda,nvtx,osrt,cudnn,cublas   --sample=cpu   --python-sampling=true   -o report uv run main.py
+
+2. vLLM:
+    - nsys profile \
+  --trace=cuda,nvtx,osrt \
+  --trace-fork-before-exec=true \
+  --cuda-graph-trace=node \
+  --delay=30 --duration=30 \
+  -o vllm_report --force-overwrite=true \
+  bash vLLM_test/02/script/vllm_nsight_inference.sh
+
