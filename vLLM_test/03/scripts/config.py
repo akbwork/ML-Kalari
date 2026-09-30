@@ -10,8 +10,6 @@ AUDIO_FILES_FOLDER = "/Users/ananthakrishnab/Desktop/Projects/vLLM Serving/ML-Ka
 
 REQUESTS_PER_USER = 12
 
-CHUNK_SIZE = 15
-
 CONCURRENCY_LEVELS = [
     1,
     2,
