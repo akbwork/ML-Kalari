@@ -9,7 +9,7 @@ LOG_DIR="${SCRIPT_DIR}/logs"
 LOG_FILE="${LOG_DIR}/vllm_audio.log"
 HOST="0.0.0.0"
 PORT="8015"
-GPU_MEMORY_UTIL=0.95 # 95% GPU
+GPU_MEMORY_UTIL=0.50 # 95% GPU
 
 mkdir -p "${LOG_DIR}"
 
